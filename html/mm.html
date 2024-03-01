@@ -1,0 +1,22 @@
+<!--write a code to subtract two numbers using all three data types in html and javascript-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Subtraction</title>
+</head>
+
+<body>
+    <h1>Subtraction</h1>
+    <p>Enter the first number: <input type="number" id="num1" min="0" /></p>
+    <p>Enter the second number: <input type="number" id="num2" min="0" /></p>
+    <p>Answer: <input type="number" id="ans" min="0" /></p>
+</body>
+<script>
+    var num1 = Number(document.getElementById("num1").value);
+    var num2 = Number(document.getElementById("num2").value);
+    var ans = num1 - num2;
+    document.write(ans);
+</script>
+
+</html>

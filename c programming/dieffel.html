@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Diffie-Hellman Key Exchange</title>
+</head>
+
+<body>
+    <h1>Diffie-Hellman Key Exchange</h1>
+    <p>Alice's Public Key: <span id="alicePublicKey"></span></p>
+    <p>Bob's Public Key: <span id="bobPublicKey"></span></p>
+    <p>Shared Secret Key: <span id="sharedSecretKey"></span></p>
+
+    <script>
+        // Prime and generator values (should be agreed upon in advance)
+        const prime = 23; // A prime number
+        const generator = 5; // A generator
+
+        // Generate random private keys for Alice and Bob
+        const alicePrivateKey = Math.floor(Math.random() * (prime - 1)) + 1;
+        const bobPrivateKey = Math.floor(Math.random() * (prime - 1)) + 1;
+
+        // Calculate public keys for Alice and Bob
+        const alicePublicKey = (generator ** alicePrivateKey) % prime;
+        const bobPublicKey = (generator ** bobPrivateKey) % prime;
+
+        // Calculate the shared secret key for Alice and Bob
+        const aliceSharedKey = (bobPublicKey ** alicePrivateKey) % prime;
+        const bobSharedKey = (alicePublicKey ** bobPrivateKey) % prime;
+
+        // Display the values on the webpage
+        document.getElementById('alicePublicKey').textContent = alicePublicKey;
+        document.getElementById('bobPublicKey').textContent = bobPublicKey;
+        document.getElementById('sharedSecretKey').textContent = aliceSharedKey;
+
+        // Verify that Alice and Bob's shared keys match
+        if (aliceSharedKey === bobSharedKey) {
+            console.log('Shared secret key is the same for both Alice and Bob!');
+        } else {
+            console.log('Shared secret key does not match! Something went wrong.');
+        }
+    </script>
+</body>
+
+</html>
